@@ -1,13 +1,16 @@
 #coding: UTF-8
-import os
 import json
+import io
 import random as rnd
+from requests_oauthlib import OAuth1Session
 from PIL import Image, ImageDraw
 from datetime import datetime
 from twitter import *
 from config import *
 
-Tweetmsg = ""
+twitter = OAuth1Session(consumer_key, consumer_secret, token, token_secret)
+url_media = "https://upload.twitter.com/1.1/media/upload.json"
+url_text = "https://api.twitter.com/1.1/statuses/update.json"
 
 #Card.jsonを取得
 with open("Card.json","r") as c:
@@ -36,18 +39,6 @@ im5 = Image.open('ImgFile/HeroImg/' + Hero["img"]).convert('RGBA')
 iconimg = Image.open('ImgFile/deck_logowhite.png').convert('RGBA')
 logoimg = Image.open('ImgFile/deckcps_mark.png').convert('RGBA')
 im5_RGB = (int(Hero["R"]),int(Hero["G"]),int(Hero["B"]))
-
-#Hero["hero"]でヒーロー名,Hero["img"]でヒーロー画像を表示出来る。Cardも同様
-print("【" + Hero["hero"] + "】" + "で\n" + "\n" + "・"+ deck1["card"] + "\n" + "・"+ deck2["card"] + "\n" + "・"+ deck3["card"] + "\n" + "・"+ deck4["card"] + "\n" + "\nを使ったデッキ")
-# t = Twitter(
-#     auth=OAuth(
-#         token,
-#         token_secret,
-#         consumer_key,
-#         consumer_secret,
-#     )
-# )
-# t.statuses.update(status="Tweetmsg")
 
 #costom
 def get_concat_s(im1,im2,im3,im4,im5,iconimg,logoimg,im5_RGB):
@@ -95,5 +86,27 @@ def get_concat_s(im1,im2,im3,im4,im5,iconimg,logoimg,im5_RGB):
 
     return bg
 
+#Hero["hero"]でヒーロー名,Hero["img"]でヒーロー画像を表示出来る。Cardも同様
+Tweetmsg = ("【" + Hero["hero"] + "】" + "で\n" + "\n" + "・"+ deck1["card"] + "\n" + "・"+ deck2["card"] + "\n" + "・"+ deck3["card"] + "\n" + "・"+ deck4["card"] + "\n" + "\nを使ったデッキ")
+
+#生成した画像をバイナリ変換してTwitterにupload
 timestr = datetime.now().isoformat(timespec='seconds')
-get_concat_s(im1,im2,im3,im4,im5,iconimg,logoimg,im5_RGB).save('ImgFile/GenImg/' + timestr + 'S' +'.png')
+out_img = io.BytesIO()
+get_concat_s(im1,im2,im3,im4,im5,iconimg,logoimg,im5_RGB).save(out_img,format='PNG')
+img_byte = out_img.getvalue()
+
+# 画像 URL
+files = {"media" : img_byte}
+send_media = twitter.post(url_media, files = files)
+
+# レスポンス
+if send_media.status_code != 200:
+    print ("画像アップロード失敗: %s", send_media.text)
+    exit()
+
+# media_id を取得
+media_id = json.loads(send_media.text)['media_id']
+
+# 投稿した画像をツイートに添付したい場合はこんな風に取得したmedia_idを"media_ids"で指定してツイートを投稿
+params = {'status': Tweetmsg, "media_ids": [media_id]}
+send_media = twitter.post(url_text, params = params)
