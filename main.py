@@ -48,7 +48,7 @@ im5_RGB = (int(Hero["R"]),int(Hero["G"]),int(Hero["B"]))
 print("-ImgOpen_R:" + Hero["R"] + "_G:" + Hero["G"] + "_B:" + Hero["B"])
 #costom
 def get_concat_s(im1,im2,im3,im4,im5,iconimg,logoimg,im5_RGB):
-    print("======ImgMarge_Start=====")
+    print("======Imgmerge_Start=====")
     #image set
     bg = Image.new('RGBA',(1478,1970),(im5_RGB[0], im5_RGB[1], im5_RGB[2]))
     dst = Image.new('RGBA',(im1.width * 2 ,im1.height * 2))
@@ -68,29 +68,28 @@ def get_concat_s(im1,im2,im3,im4,im5,iconimg,logoimg,im5_RGB):
     iconimg_size.putalpha(76) #image Transmittance change to 30%
     iconimg_clear.paste(iconimg_size,(im1.width - 440,im1.height - 549),mask)
     
-    #4Card marge
+    #4Card merge
     dst.paste(im1,(0,0))
     dst.paste(im2,(im1.width,0))
     dst.paste(im3,(0,im1.height))
     dst.paste(im4,(im1.width,im1.height))
 
-    #hero icon marge
+    #hero icon merge
     subdst.paste(im5,(0,0))
     subdst = subdst.resize((int(im5.width*1.5),int(im5.height*1.5)))
     
-    #Marge dst to icon
+    #merge dst to icon
     dst = Image.alpha_composite(dst,iconimg_clear)
 
-    #Marge bg to 4Card
+    #merge bg to 4Card
     bg.paste(dst,(0+116,0+64))
 
-    #Marge bg to heroicon
+    #merge bg to heroicon
     bg.paste(subdst,(0+116,dst.height+64))
     
-    #Marge bg to logo
+    #merge bg to logo
     bg = Image.alpha_composite(bg, logoimg_clear)
-    bg = bg.resize((int(bg.width/bg.height*500) ,500))
-    print("======ImgMarge_sucsess!=====")
+    print("======Imgmerge_sucsess!=====")
 
     return bg
 
