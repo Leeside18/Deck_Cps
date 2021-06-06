@@ -51,7 +51,6 @@ def get_concat_s(im1,im2,im3,im4,im5,iconimg,logoimg,im5_RGB):
     print("======ImgMarge_Start=====")
     #image set
     bg = Image.new('RGBA',(1478,1970),(im5_RGB[0], im5_RGB[1], im5_RGB[2]))
-    #bg = Image.new('RGBA',(1246,935),(im5_RGB[0], im5_RGB[1], im5_RGB[2]))
     dst = Image.new('RGBA',(im1.width * 2 ,im1.height * 2))
     subdst = Image.new('RGBA',(im5.width,im5.height))
     iconimg_clear = Image.new("RGBA", dst.size, (255, 255, 255, 0))
