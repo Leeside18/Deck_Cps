@@ -78,3 +78,9 @@ for path in glob.glob(os.path.join(from_dir, '*.png')):
         
     # exefilename = basename + '_OAMC.png'
     # outputimg.save(os.path.join(to_dir, exefilename))
+# path = 'ImgFile/HeroImg/ui_pro_icon360.png'
+# img = Image.open(path)  # 読み込み
+# basename = os.path.splitext(os.path.basename(path))[0]
+# small_img = img.resize((100, 100))  # 時間短縮のために解像度を落とす
+# colorstr = pic_getpixcel(small_img)
+# print(basename + ',' + colorstr)
