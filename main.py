@@ -8,13 +8,13 @@ from datetime import datetime
 from twitter import *
 from config import *
 
-twitter = OAuth1Session(consumer_key, consumer_secret, token, token_secret)
-url_media = "https://upload.twitter.com/1.1/media/upload.json"
-url_text = "https://api.twitter.com/1.1/statuses/update.json"
-
 #実行スクリプトパスに移動する
 script_dir = os.path.dirname(os.path.realpath(__file__))
 os.chdir(script_dir)
+
+twitter = OAuth1Session(consumer_key, consumer_secret, token, token_secret)
+url_media = "https://upload.twitter.com/1.1/media/upload.json"
+url_text = "https://api.twitter.com/1.1/statuses/update.json"
 
 print("=====Deck_Generate_Start=====")
 #Card.jsonを取得
