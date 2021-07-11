@@ -1456,7 +1456,35 @@
         "img": "g_ur_sp_14.png"
     },
     {
-        "card": "【秘密結社\"MMM\"首脳】零夜",
+        "card": "\"【秘密結社\"\"\"\"MMM\"\"\"\"首脳】零夜\"",
         "img": "b_ur_sp_19.png"
+    },
+    {
+        "card": "【ガンナー】大乱闘フェスティバル",
+        "img": "r_ur_sp_17.png"
+    },
+    {
+        "card": "【ペルソナ5】TAKE YOUR HEART",
+        "img": "r_ur_47.png"
+    },
+    {
+        "card": "フォックス",
+        "img": "b_sr_44.png"
+    },
+    {
+        "card": "クイーン",
+        "img": "r_sr_41.png"
+    },
+    {
+        "card": "ノワール",
+        "img": "g_sr_42.png"
+    },
+    {
+        "card": "【ペルソナ5】運命の囚われ",
+        "img": "b_ur_44.png"
+    },
+    {
+        "card": "【ペルソナ5】心の怪盗団",
+        "img": "g_ur_40.png"
     }
 ]
