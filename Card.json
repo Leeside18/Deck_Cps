@@ -2602,5 +2602,54 @@
         "color": "green",
         "rarity": "u",
         "source": "Collabo"
+    },
+    {
+        "card": "【# コンパスフェス】ぶんぶん疾走旅行",
+        "img": "sp_ur52.png",
+        "color": "green",
+        "rarity": "u",
+        "source": "Event"
+    },
+    {
+        "card": "【貴き紅薔薇】マリア=S=レオンブルク",
+        "img": "sp_ur53.png",
+        "color": "red",
+        "rarity": "u",
+        "source": "Event"
+    },
+    {
+        "card": "戦士の灯/超圧縮荷電粒子法 ラグナロク",
+        "img": "r_r_19.png",
+        "color": "red",
+        "rarity": "r",
+        "source": "Constancy"
+    },
+    {
+        "card": "戦禍の灯/フレイヤ -哀愁のドッグタグ-",
+        "img": "b_sr_45.png",
+        "color": "blue",
+        "rarity": "s",
+        "source": "Constancy"
+    },
+    {
+        "card": "戦慄の灯/AGBW-3990N ヘイムダル",
+        "img": "g_sr_43.png",
+        "color": "green",
+        "rarity": "s",
+        "source": "Constancy"
+    },
+    {
+        "card": "戦略の灯/国防長官フレイ",
+        "img": "b_ur_45.png",
+        "color": "blue",
+        "rarity": "u",
+        "source": "Constancy"
+    },
+    {
+        "card": "戦陣の灯/VDN-93 強襲揚陸艦 ユグドラシル",
+        "img": "g_ur_41.png",
+        "color": "green",
+        "rarity": "u",
+        "source": "Constancy"
     }
 ]
